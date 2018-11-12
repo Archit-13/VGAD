@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 const UP =Vector2(0,-1)
 const Gravity=20
-const Jump=-1100
+const Jump=-700
 const Acceleration=100
 const MaxSpeed=400
-var jump = Jump -10000
+var jump = Jump 
 var motion=Vector2()
 var friction=false
 func _physics_process(delta):
@@ -16,19 +16,19 @@ func _physics_process(delta):
 		$Brassman.play("Run")
 		motion.x=min(motion.x+Acceleration,MaxSpeed)
 		if Input.is_action_just_pressed("ui_accept"):
-			self.position.x+=50
+			self.position.x+=120
 	elif Input.is_action_pressed("ui_left"):
 		$Brassman.flip_h=true
 		$Brassman/Trambone.flip_h=true
 		$Brassman.play("Run")
 		motion.x=max(motion.x-Acceleration,-MaxSpeed)
 		if Input.is_action_just_pressed("ui_accept"):
-			self.position.x-=50
+			self.position.x-=120
 	else:
 		$Brassman.play("idle")
 		motion.x=0
 	if is_on_floor():
-		jump = Jump - 10000
+		jump = Jump 
 		if Input.is_action_pressed("ui_up"):
 			motion.y=Jump
 		if friction==true:
